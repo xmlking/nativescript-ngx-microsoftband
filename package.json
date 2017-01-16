@@ -1,0 +1,62 @@
+{
+  "name": "nativescript-ngx-microsoftband",
+  "version": "0.0.0",
+  "description": "Your awesome NativeScript + Angular plugin.",
+  "main": "nativescript-ngx-microsoftband",
+  "typings": "index.d.ts",
+  "nativescript": {
+    "platforms": {
+      "android": "2.4.1",
+      "ios": "2.4.0"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmlking/nativescript-ngx-microsoftband.git"
+  },
+  "keywords": [
+    "angular",
+    "angular2",
+    "ng",
+    "ngx",
+    "ng2",
+    "iot",
+    "fitness",
+    "healthcare",
+    "nativescript",
+    "microsoftband"
+  ],
+  "author": "Sumanth Chinthagunta <xmlking@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xmlking/nativescript-ngx-microsoftband/issues"
+  },
+  "homepage": "https://github.com/xmlking/nativescript-ngx-microsoftband#readme",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf src/platforms",
+    "demo.ios": "yarn run preparedemo; cd src; tns run ios --emulator --justlaunch",
+    "demo.android": "yarn run preparedemo; cd src; tns run android --emulator --justlaunch",
+    "preparedemo": "yarn run build; cd src; tns plugin remove nativescript-ngx-microsoftband; tns plugin add ..;",
+    "setup": "cd src && yarn && cd .. && yarn"
+  },
+  "dependencies": {
+    "@angular/common": "~2.4.3",
+    "@angular/compiler": "~2.4.3",
+    "@angular/core": "~2.4.3",
+    "@angular/forms": "~2.4.3",
+    "@angular/http": "~2.4.3",
+    "@angular/platform-browser": "~2.4.3",
+    "@angular/platform-browser-dynamic": "~2.4.3",
+    "@angular/router": "~3.4.3",
+    "nativescript-angular": "next",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "~5.0.3"
+  },
+  "devDependencies": {
+    "tns-core-modules": "next",
+    "tns-platform-declarations": "2.4.4",
+    "typescript": "~2.1.5",
+    "zone.js": "~0.7.2"
+  }
+}

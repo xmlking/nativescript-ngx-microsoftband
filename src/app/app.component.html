@@ -1,0 +1,33 @@
+<ActionBar title="MicrosoftBand Demo">
+  <ActionItem (tap)="toggle()" ios.position="right">
+    <Button [text]='connected'></Button>
+  </ActionItem>
+</ActionBar>
+<TabView>
+  <ScrollView *tabItem="{title: 'Status'}">
+    <StackLayout orientation="vertical">
+      <Button [text]='name'></Button>
+      <Button [text]='firmwareVersion'></Button>
+      <Button [text]='hardwareVersion'></Button>
+      <Button [text]='isBluetoothOn'></Button>
+      <Button [text]='isDeviceConnected'></Button>
+      <Button [text]='deviceIdentifier'></Button>
+      <Button [text]='userConsent'></Button>
+      <Button [text]="(heartRate | async)"></Button>
+    </StackLayout>
+  </ScrollView>
+
+  <ScrollView *tabItem="{title: 'Sensors'}">
+    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto" columns="*,*">
+      <Label row="0" col="0" class="ion" [text]='connected'></Label>
+      <Label row="0" col="1" class="ion" [text]="'B'"></Label>
+      <Label row="1" col="0" class="ion" [text]="(heartRate | async)"></Label>
+      <Label row="1" col="1" class="ion" [text]="'D'"></Label>
+      <Label row="2" col="0" class="ion" [text]="'E'"></Label>
+      <Label row="2" col="1" class="ion" [text]="'F'"></Label>
+      <Label row="3" col="0" class="ion" [text]="'G'"></Label>
+      <Label row="3" col="1" class="ion" [text]="'H'"></Label>
+    </GridLayout>
+
+  </ScrollView>
+</TabView>
