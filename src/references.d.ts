@@ -2,7 +2,7 @@
 /// <reference path="./node_modules/tns-platform-declarations/ios.d.ts" />
 /// <reference path="./node_modules/tns-platform-declarations/android.d.ts" />
 
-/// <reference path="node_modules/nativescript-ngx-microsoftband/MicrosoftBand.d.ts" />
+/// <reference path="node_modules/@xmlking/nativescript-ngx-microsoftband/MicrosoftBand.d.ts" />
 
 declare type Location = any;
 declare type Node = any;

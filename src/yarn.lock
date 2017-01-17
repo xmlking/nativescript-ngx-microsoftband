@@ -38,6 +38,21 @@
   version "2.5.40"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.40.tgz#875c7ae739dcab1342794f51231c4aadcda6eb79"
 
+"@xmlking/nativescript-ngx-microsoftband@file:..":
+  version "0.0.0"
+  dependencies:
+    "@angular/common" "~2.4.3"
+    "@angular/compiler" "~2.4.3"
+    "@angular/core" "~2.4.3"
+    "@angular/forms" "~2.4.3"
+    "@angular/http" "~2.4.3"
+    "@angular/platform-browser" "~2.4.3"
+    "@angular/platform-browser-dynamic" "~2.4.3"
+    "@angular/router" "~3.4.3"
+    nativescript-angular next
+    reflect-metadata "^0.1.8"
+    rxjs "~5.0.3"
+
 ansi-regex@^2.0.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ansi-regex/-/ansi-regex-2.1.1.tgz#c3b33ab5ee360d86e0e628f0468ae7ef27d654df"
@@ -252,22 +267,6 @@ nativescript-hook@^0.2.0:
 nativescript-intl@~0.0.8:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/nativescript-intl/-/nativescript-intl-0.0.10.tgz#2a310f07f627344f75db547177db18298d430b0e"
-
-"nativescript-ngx-microsoftband@file:..":
-  version "0.0.0"
-  dependencies:
-    "@angular/common" "~2.4.3"
-    "@angular/compiler" "~2.4.3"
-    "@angular/core" "~2.4.3"
-    "@angular/forms" "~2.4.3"
-    "@angular/http" "~2.4.3"
-    "@angular/platform-browser" "~2.4.3"
-    "@angular/platform-browser-dynamic" "~2.4.3"
-    "@angular/router" "~3.4.3"
-    nativescript-angular next
-    reflect-metadata "^0.1.8"
-    rxjs "~5.0.3"
-    tns-core-modules next
 
 nativescript-theme-core@~1.0.2:
   version "1.0.2"

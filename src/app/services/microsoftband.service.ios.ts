@@ -1,9 +1,4 @@
-// angular
 import {Injectable} from '@angular/core';
-
-// nativescript
-
-// libs
 import {Observable, Observer, BehaviorSubject} from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/share';
@@ -12,7 +7,7 @@ var connectionStatus: Observer<ConnectionStatus>;
 
 @Injectable()
 export class MicrosoftBandService {
-    public static config: any = {};
+
     public connectionStat: BehaviorSubject<any>;
 
     private mbk: MicrosoftBand;
@@ -54,6 +49,18 @@ export class MicrosoftBandService {
     requestUserConsent(callback: (isGranted) => void) {
         this.mbk.requestUserConsentWithUserConsent((consent) => {
             callback(consent)
+        })
+    }
+
+   addTile(tileId: NSUUID, tileName: string, tileIcon: string, smallIcon: string) : Promise<boolean> {
+        return new  Promise<boolean>( (resolve, reject) => {
+            this.mbk.addTileWithTileIdTileNameTileIconSmallIconCompletion(tileId, tileName, tileIcon, smallIcon, (error: NSError) => {
+                if(error) {
+                    reject(error);
+                } else {
+                    resolve(true);
+                }
+            })
         })
     }
 

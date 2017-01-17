@@ -5,43 +5,30 @@ This plugin uses MicrosoftBand [CocoaPod](https://github.com/xmlking/MicrosoftBa
 
 ## Install
 
-```
-npm install nativescript-ngx-microsoftband --save
+#### Yarn
+
+```sh
+yarn add @xmlking/nativescript-ngx-microsoftband
 ```
 
-### Usage
+#### NPM
+```sh
+npm i -S @xmlking/nativescript-ngx-microsoftband
+```
 
+## Use
+
+### 1. import the MicrosoftBandModule module
 
 ```typescript
-import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Observable as RxObservable, Subscription, BehaviorSubject } from "rxjs/Rx";
+import "rxjs/add/operator/map";
+import 'rxjs/add/operator/do';
+import {NgZone} from "@angular/core";
 
 // app
-import { MicrosoftBandModule } from 'nativescript-ngx-microsoftband';
-
-import { AppComponent } from "./app.component";
-
-@NgModule({
-  imports: [
-    NativeScriptModule,
-    MicrosoftBandModule.forRoot({})
-  ],
-  declarations: [
-    AppComponent
-  ],
-  bootstrap: [
-    AppComponent
-  ],
-  schemas: [
-    NO_ERRORS_SCHEMA
-  ]
-})
-export class AppModule { }
-```
-
-
-```typescript
-import {MicrosoftBandService} from 'nativescript-ngx-microsoftband';
+import {MicrosoftBandService} from '@xmlking/nativescript-ngx-microsoftband';
 
 @Component({
     selector: 'app',
@@ -49,6 +36,9 @@ import {MicrosoftBandService} from 'nativescript-ngx-microsoftband';
 })
 export class AppComponent implements OnInit, OnDestroy {
     public connected: boolean = false;
+    private conSub: Subscription;
+    private hrSub: Subscription;
+
     public heartRate: BehaviorSubject<number> = new BehaviorSubject(555);
 
     constructor(private zone: NgZone, private msband: MicrosoftBandService) {
@@ -58,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit() {
         console.log("calling output: ");
 
-        this.sub = this.msband.connection$.subscribe(
+        this.conSub = this.msband.connection$.subscribe(
             (status) => {
                 console.log('Next: ', status);
                 if(status === ConnectionStatus.Connected) {
@@ -74,7 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
                 else if(err.code === ConnectionError.DeviceUnavailable)
                     console.log('Error: DeviceUnavailable',err.domain);
                 else
-                    console.log('Error: unknown: ', err.code, err.localizedDescription);
+                    console.log('Error: unknown: ', err.code, err.domain, err.localizedDescription);
             },
             () => {
                 console.log('Completed');
@@ -82,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
     };
 
     ngOnDestroy() {
-        this.sub.unsubscribe()
+        this.conSub.unsubscribe()
     }
 
     public toggle() {
@@ -92,7 +82,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private onConnect() {
         this.msband.requestUserConsent((isGranted) => {
             if (isGranted) {
-                this.msband.heartrate$.subscribe(
+                this.hrSub = this.msband.heartrate$.subscribe(
                     (data: HeartRateData) => {
                         console.log("HeartRateData 0 ....");
                         console.log("HeartRateData....", data.heartRate, data.quality, data.timestamp, data.type);
@@ -110,7 +100,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private onDisconnect() {
         console.log(".....Disconnected....");
-        this.connected = false;
+        this.zone.run(() => {
+            this.connected = false;
+        });
+        this.hrSub.unsubscribe()
     }
 
 }
@@ -118,10 +111,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
 ## Credits
 
-Idea came from [NathanaelA](https://github.com/NathanaelA)
+Idea came from [NathanWalker](https://github.com/NathanWalker)
 
 ## Contributors
-
 
 
 # License

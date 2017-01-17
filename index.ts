@@ -8,8 +8,7 @@ export * from './src/app/services/microsoftband.service';
 })
 export class MicrosoftBandModule {
 
-  static forRoot(providedConfig: any): ModuleWithProviders {
-    MicrosoftBandService.config = providedConfig;
+  static forRoot(): ModuleWithProviders {
     return {
       ngModule: MicrosoftBandModule,
       providers: [MicrosoftBandService]

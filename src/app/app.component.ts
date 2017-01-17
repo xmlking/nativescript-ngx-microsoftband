@@ -6,7 +6,7 @@ import 'rxjs/add/operator/do';
 import {NgZone} from "@angular/core";
 
 // app
-import {MicrosoftBandService} from 'nativescript-ngx-microsoftband';
+import {MicrosoftBandService} from '@xmlking/nativescript-ngx-microsoftband';
 
 @Component({
     selector: 'app',
@@ -14,7 +14,8 @@ import {MicrosoftBandService} from 'nativescript-ngx-microsoftband';
 })
 export class AppComponent implements OnInit, OnDestroy {
     public connected: boolean = false;
-    private sub: Subscription;
+    private conSub: Subscription;
+    private hrSub: Subscription;
     public name : string;
     public firmwareVersion : string;
     public hardwareVersion : string;
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit() {
         console.log("calling output: ");
 
-        this.sub = this.msband.connection$.subscribe(
+        this.conSub = this.msband.connection$.subscribe(
             (status) => {
                 console.log('Next: ', status);
                 if(status === ConnectionStatus.Connected) {
@@ -55,7 +56,7 @@ export class AppComponent implements OnInit, OnDestroy {
     };
 
     ngOnDestroy() {
-        this.sub.unsubscribe()
+        this.conSub.unsubscribe()
     }
 
     public toggle() {
@@ -75,7 +76,7 @@ export class AppComponent implements OnInit, OnDestroy {
         });
         this.msband.requestUserConsent((isGranted) => {
             if (isGranted) {
-                this.msband.heartrate$.subscribe(
+                this.hrSub = this.msband.heartrate$.subscribe(
                     (data: HeartRateData) => {
                         console.log("HeartRateData 0 ....");
                         console.log("HeartRateData....", data.heartRate, data.quality, data.timestamp, data.type);
@@ -93,7 +94,10 @@ export class AppComponent implements OnInit, OnDestroy {
 
     private onDisconnect() {
         console.log(".....Disconnected....");
-        this.connected = false;
+        this.zone.run(() => {
+            this.connected = false;
+        });
+        this.hrSub.unsubscribe()
     }
 
 }

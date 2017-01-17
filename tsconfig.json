@@ -4,10 +4,12 @@
         "module": "commonjs",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "sourceMap": true,
+        "declaration": true,
         "noEmitHelpers": true,
         "lib": [
-            "es2016"
+            "es2015",
+            "es2016",
+            "es2017"
         ]
     },
     "exclude": [

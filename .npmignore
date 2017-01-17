@@ -45,17 +45,18 @@ Thumbs.db
 references.d.ts
 *.yml
 src/*
+# https://github.com/npm/npm/issues/1097
 src/package.json
 src/app/App_Resources
 src/app/app.*
 src/app/main.*
 src/app/assets
+src/hooks
+src/node_modules
 src/app/package.json
 !src/app/services/*
 *.spec.*
 *.e2e.*
-CONTRIBUTING.md
-karma.conf.js
 protractor.conf.js
 test-main.js
 tsconfig.json
@@ -63,7 +64,6 @@ tslint.json
 typedoc.json
 typings.json
 typings
-.travis.yml
 .jshintrc
 .editorconfig
 *.png

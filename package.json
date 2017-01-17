@@ -1,8 +1,8 @@
 {
-  "name": "nativescript-ngx-microsoftband",
+  "name": "@xmlking/nativescript-ngx-microsoftband",
   "version": "0.0.0",
   "description": "Your awesome NativeScript + Angular plugin.",
-  "main": "nativescript-ngx-microsoftband",
+  "main": "index.js",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
@@ -37,7 +37,7 @@
     "clean": "rm -rf src/platforms",
     "demo.ios": "yarn run preparedemo; cd src; tns run ios --emulator --justlaunch",
     "demo.android": "yarn run preparedemo; cd src; tns run android --emulator --justlaunch",
-    "preparedemo": "yarn run build; cd src; tns plugin remove nativescript-ngx-microsoftband; tns plugin add ..;",
+    "preparedemo": "yarn run build; cd src; tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ..;",
     "setup": "cd src && yarn && cd .. && yarn"
   },
   "dependencies": {
