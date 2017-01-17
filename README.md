@@ -21,13 +21,39 @@ npm i -S @xmlking/nativescript-ngx-microsoftband
 ### 1. import the MicrosoftBandModule module
 
 ```typescript
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
+import { NativeScriptModule } from "nativescript-angular/nativescript.module";
+import { MicrosoftBandModule } from '@xmlking/nativescript-ngx-microsoftband';
+
+import { AppComponent } from "./app.component";
+
+@NgModule({
+  imports: [
+    NativeScriptModule,
+    MicrosoftBandModule.forRoot()
+  ],
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+  schemas: [
+    NO_ERRORS_SCHEMA
+  ]
+})
+export class AppModule { }
+```
+
+### 2. use it in your service/component
+
+```typescript
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Observable as RxObservable, Subscription, BehaviorSubject } from "rxjs/Rx";
 import "rxjs/add/operator/map";
 import 'rxjs/add/operator/do';
 import {NgZone} from "@angular/core";
 
-// app
 import {MicrosoftBandService} from '@xmlking/nativescript-ngx-microsoftband';
 
 @Component({
