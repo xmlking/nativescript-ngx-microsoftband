@@ -1,33 +1,60 @@
 <ActionBar title="MicrosoftBand Demo">
-  <ActionItem (tap)="toggle()" ios.position="right">
-    <Button [text]='connected'></Button>
+  <ActionItem ios.position="right">
+    <Switch #sw1 [checked]='connected' (tap)="toggle()" class="switch"></Switch>
   </ActionItem>
 </ActionBar>
-<TabView>
+<TabView class="tab-view">
+
   <ScrollView *tabItem="{title: 'Status'}">
-    <StackLayout orientation="vertical">
-      <Button [text]='name'></Button>
-      <Button [text]='firmwareVersion'></Button>
-      <Button [text]='hardwareVersion'></Button>
-      <Button [text]='isBluetoothOn'></Button>
-      <Button [text]='isDeviceConnected'></Button>
-      <Button [text]='deviceIdentifier'></Button>
-      <Button [text]='userConsent'></Button>
-      <Button [text]="(heartRate | async)"></Button>
-    </StackLayout>
+    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
+      <Label row="0" col="0" text="Name" class="text-left font-weight-bold"></Label>
+      <Label row="0" col="1" [text]='name' textWrap="true" class="text-right"></Label>
+      <Label row="1" col="0" text="Firmware" class="text-left font-weight-bold"></Label>
+      <Label row="1" col="1" [text]='firmwareVersion' class="text-right"></Label>
+      <Label row="2" col="0" text="Hardware" class="text-left font-weight-bold"></Label>
+      <Label row="2" col="1" [text]='hardwareVersion' class="text-right"></Label>
+      <Label row="3" col="0" text="isBluetoothOn?" class="text-left font-weight-bold"></Label>
+      <Label row="3" col="1" [text]='isBluetoothOn' class="text-right"></Label>
+      <Label row="4" col="0" text="Device Identifier" class="text-left font-weight-bold"></Label>
+      <Label row="4" col="1" [text]='deviceIdentifier' textWrap="true" class="text-right"></Label>
+      <Label row="5" col="0" text="User Consent" class="text-left font-weight-bold"></Label>
+      <Label row="5" col="1" [text]='userConsent' class="text-right"></Label>
+      <Label row="6" col="0" text="connected?" class="text-left font-weight-bold"></Label>
+      <Label row="6" col="1" [text]='connected' class="text-right"></Label>
+
+      <Label row="7" colSpan="2" *ngIf='message' [text]='"message: " + message'></Label>
+      <Label row="8" colSpan="2" *ngIf='errorMsg' [text]='"error: " + errorMsg'></Label>
+
+      <Button row="9" colSpan="2" class="btn btn-primary" text="Add Tile" (tap)="addTile()"></Button>
+      <Button row="10" col="0" class="btn btn-outline" text="Send Notification" (tap)="sendNotification()"></Button>
+      <Button row="10" col="1" class="btn btn-outline" text="Send Haptic" (tap)="sendHaptic()"></Button>
+    </GridLayout>
   </ScrollView>
 
   <ScrollView *tabItem="{title: 'Sensors'}">
-    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto" columns="*,*">
-      <Label row="0" col="0" class="ion" [text]='connected'></Label>
-      <Label row="0" col="1" class="ion" [text]="'B'"></Label>
-      <Label row="1" col="0" class="ion" [text]="(heartRate | async)"></Label>
-      <Label row="1" col="1" class="ion" [text]="'D'"></Label>
-      <Label row="2" col="0" class="ion" [text]="'E'"></Label>
-      <Label row="2" col="1" class="ion" [text]="'F'"></Label>
-      <Label row="3" col="0" class="ion" [text]="'G'"></Label>
-      <Label row="3" col="1" class="ion" [text]="'H'"></Label>
+
+    <GridLayout *ngIf="connected" rows="*, *, *, *, *" columns="*,*,*">
+
+      <heart-rate connected="connected" row="0" col="0" ></heart-rate>
+      <accelerometer connected="connected" row="0" col="1" ></accelerometer>
+      <altimeter connected="connected" row="0" col="2" ></altimeter>
+
+      <pedometer connected="connected" row="1" col="0"></pedometer>
+      <barometer connected="connected" row="1" col="1"></barometer>
+      <calories connected="connected" row="1" col="2"></calories>
+
+      <uv connected="connected" row="2" col="0"></uv>
+      <skin-temperature connected="connected" row="2" col="1"></skin-temperature>
+      <gsr connected="connected" row="2" col="2"></gsr>
+
+      <gyroscope connected="connected" row="3" col="0"></gyroscope>
+      <ambient-light connected="connected" row="3" col="1"></ambient-light>
+      <distance connected="connected" row="3" col="2"></distance>
+
+      <contact connected="connected" row="4" col="0"></contact>
+
     </GridLayout>
 
   </ScrollView>
+
 </TabView>

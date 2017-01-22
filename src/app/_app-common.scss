@@ -1,0 +1,100 @@
+// Import the theme’s variables. If you’re using a color scheme
+// other than “light”, switch the path to the alternative scheme,
+// for example 'nativescript-theme-core/scss/dark'.
+@import 'nativescript-theme-core/scss/light';
+
+// Customize any of the theme’s variables here, for instance $btn-color: red;
+
+// Import the theme’s main ruleset.
+@import 'nativescript-theme-core/scss/index';
+
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+
+
+.fa {
+  font-family: FontAwesome, fontawesome-webfont;
+}
+
+.tile {
+  color:#fff;
+  margin: 5;
+  .title {
+    background-color: #99ccff;
+    Label {
+      font-size: 14;
+      color: black;
+      margin-top: 5;
+    }
+  }
+  .error {
+    color: fuchsia;
+    text-align: left;
+  }
+}
+
+.green {
+  @extend .tile;
+  background-color: green;
+}
+
+.blue {
+  @extend .tile;
+  background-color: #00005e;
+}
+
+.red {
+  @extend .tile;
+  background-color: #d50000;
+}
+
+.prim {
+  @extend .tile;
+  background-color: #30bcff;
+}
+
+.sumo0 {
+  @extend .tile;
+  background-color: #da5efa;
+  //color:#25a105
+}
+
+.yellow {
+  @extend .tile;
+  background-color: #fada5e;
+  //color:#0525a1;
+}
+
+.sumo1 {
+  @extend .tile;
+  background-color: #5efada;
+  //color:#a10525
+}
+
+.purple {
+  @extend .tile;
+  background-color: #862a75;
+  //color:#79d58a
+}
+
+.trendygreen {
+  @extend .tile;
+  background-color: #76862a;
+  //color:#8979d5
+}
+
+.tealblue {
+  @extend .tile;
+  background-color: #2a7686;
+  //color:#d58979
+}
+
+
+
+
+
+
+
+
+
+

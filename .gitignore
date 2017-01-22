@@ -61,6 +61,7 @@ index.d.ts
 !references.d.ts
 *.js
 *.js.map
+*.css
 !*.e2e.js
 !karma*.js
 !test-main.js

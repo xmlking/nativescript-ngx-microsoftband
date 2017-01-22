@@ -44,6 +44,7 @@ Thumbs.db
 !*.d.ts
 references.d.ts
 *.yml
+*.scss
 src/*
 # https://github.com/npm/npm/issues/1097
 src/package.json
@@ -53,7 +54,9 @@ src/app/main.*
 src/app/assets
 src/hooks
 src/node_modules
+src/app/fonts
 src/app/package.json
+src/app/components
 !src/app/services/*
 *.spec.*
 *.e2e.*

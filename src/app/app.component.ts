@@ -13,9 +13,13 @@ import {MicrosoftBandService} from '@xmlking/nativescript-ngx-microsoftband';
     templateUrl: "app.component.html"
 })
 export class AppComponent implements OnInit, OnDestroy {
+    private tileId: NSUUID = NSUUID.alloc().initWithUUIDString("be2066df-306f-438e-860c-f82a8bc0bd6a");
+
     public connected: boolean = false;
     private conSub: Subscription;
-    private hrSub: Subscription;
+    public message: string;
+    public errorMsg: string;
+
     public name : string;
     public firmwareVersion : string;
     public hardwareVersion : string;
@@ -23,20 +27,76 @@ export class AppComponent implements OnInit, OnDestroy {
     public isDeviceConnected : boolean;
     public deviceIdentifier : NSUUID;
     public userConsent : UserConsent;
-    public heartRate: BehaviorSubject<number> = new BehaviorSubject(555);
 
     constructor(private zone: NgZone, private msband: MicrosoftBandService) {
 
     }
 
     ngOnInit() {
-        console.log("calling output: ");
+        this.connect()
 
+    };
+
+    ngOnDestroy() {
+        this.disconnect();
+    }
+
+    toggle() {
+        if(this.connected) {
+            this.disconnect()
+        } else {
+            this.connect()
+        }
+    }
+
+    addTile() {
+        if(! this.connected) {
+            this.errorMsg = "Band not connected"
+        } else {
+            this.msband.addTile( this.tileId,  "Wearable Hub",    "O",  "Oo")
+                .then( () => {
+                    this.message = "tile added"
+                })
+                .catch((error: NSError) => {
+                    this.errorMsg = error.localizedDescription
+                })
+        }
+    }
+
+    sendNotification() {
+        if(! this.connected) {
+            this.errorMsg = "Band not connected"
+        } else {
+            this.msband.sendBandNotification( this.tileId, "sumo", "good work")
+                .then( () => {
+                    this.message = "Notification Sent"
+                })
+                .catch((error: NSError) => {
+                    this.errorMsg = error.localizedDescription
+                })
+        }
+    }
+
+    sendHaptic() {
+        if(! this.connected) {
+            this.errorMsg = "Band not connected"
+        } else {
+            this.msband.sendHaptic()
+                .then( () => {
+                    this.message = "Haptic Sent"
+                })
+                .catch((error: NSError) => {
+                    this.errorMsg = error.localizedDescription
+                })
+        }
+    }
+
+    private connect() {
         this.conSub = this.msband.connection$.subscribe(
             (status) => {
                 console.log('Next: ', status);
                 if(status === ConnectionStatus.Connected) {
-                    console.log(".....Connected....");
+                    console.log("App: Connected");
                     this.onConnect();
                 } else {
                     this.onDisconnect();
@@ -44,23 +104,22 @@ export class AppComponent implements OnInit, OnDestroy {
             },
             (err : NSError) => {
                 if(err.code === ConnectionError.BluetoothUnavailable)
-                    console.log('Error: BluetoothUnavailable',err.domain);
+                    console.log('App Error: BluetoothUnavailable',err.domain);
                 else if(err.code === ConnectionError.DeviceUnavailable)
-                    console.log('Error: DeviceUnavailable',err.domain);
+                    console.log('App Error: DeviceUnavailable',err.domain);
                 else
-                    console.log('Error: unknown: ', err.code, err.domain, err.localizedDescription);
+                    console.log('App Error: unknown: ', err.code, err.domain, err.localizedDescription);
             },
             () => {
-                console.log('Completed');
+                console.log('App: Completed');
             });
-    };
-
-    ngOnDestroy() {
-        this.conSub.unsubscribe()
     }
 
-    public toggle() {
-        this.connected = !this.connected;
+    private disconnect() {
+        if(this.conSub) {
+            this.conSub.unsubscribe();
+        }
+        this.connected = false
     }
 
     private onConnect() {
@@ -74,22 +133,6 @@ export class AppComponent implements OnInit, OnDestroy {
             this.deviceIdentifier   = this.msband.deviceIdentifier;
             this.userConsent        = this.msband.userConsent;
         });
-        this.msband.requestUserConsent((isGranted) => {
-            if (isGranted) {
-                this.hrSub = this.msband.heartrate$.subscribe(
-                    (data: HeartRateData) => {
-                        console.log("HeartRateData 0 ....");
-                        console.log("HeartRateData....", data.heartRate, data.quality, data.timestamp, data.type);
-                        this.zone.run(() => {
-                            this.heartRate.next(data.heartRate);
-                        });
-                    },
-                    (error: NSError) => {
-                        console.log('Error: HeartRateData', error);
-                    }
-                )
-            }
-        })
     }
 
     private onDisconnect() {
@@ -97,7 +140,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.zone.run(() => {
             this.connected = false;
         });
-        this.hrSub.unsubscribe()
     }
 
 }
