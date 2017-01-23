@@ -58,6 +58,7 @@ __build__/**
 *.d.ts
 !MicrosoftBand.d.ts
 !references.d.ts
+!src/app/services/microsoftband.service.d.ts
 *.js
 *.js.map
 *.css

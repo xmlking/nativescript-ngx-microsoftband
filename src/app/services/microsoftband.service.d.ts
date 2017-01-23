@@ -1,0 +1,34 @@
+import { Observable, BehaviorSubject } from "rxjs/Rx";
+import "rxjs/add/operator/map";
+import 'rxjs/add/operator/share';
+export declare class MicrosoftBandService {
+    connectionStat: BehaviorSubject<any>;
+    private mbk;
+    readonly name: string;
+    readonly isDeviceConnected: boolean;
+    readonly userConsent: UserConsent;
+    readonly deviceIdentifier: NSUUID;
+    readonly firmwareVersion: string;
+    readonly hardwareVersion: string;
+    readonly isBluetoothOn: boolean;
+    constructor();
+    requestUserConsent(callback: (isGranted) => void): void;
+    addTile(tileId: NSUUID, tileName: string, tileIcon: string, smallIcon: string): Promise<boolean>;
+    sendHaptic(): Promise<boolean>;
+    sendBandNotification(tileId: NSUUID, title: string, body: string): Promise<boolean>;
+    connection$: Observable<ConnectionStatus>;
+    heartrate$: Observable<HeartRateData>;
+    rrInterval$: Observable<RRIntervalData>;
+    accelerometer$: Observable<AccelerometerData>;
+    altimeter$: Observable<AltimeterData>;
+    ambientLight$: Observable<AmbientLightData>;
+    contact$: Observable<ContactData>;
+    barometer$: Observable<BarometerData>;
+    calories$: Observable<CaloriesData>;
+    distance$: Observable<DistanceData>;
+    GSR$: Observable<GSRData>;
+    gyroscope$: Observable<GyroscopeData>;
+    pedometer$: Observable<PedometerData>;
+    skinTemperature$: Observable<SkinTemperatureData>;
+    uv$: Observable<UVData>;
+}
