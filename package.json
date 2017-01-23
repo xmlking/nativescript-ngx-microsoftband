@@ -1,7 +1,7 @@
 {
   "name": "@xmlking/nativescript-ngx-microsoftband",
   "version": "0.1.0",
-  "description": "Your awesome NativeScript + Angular plugin.",
+  "description": "Microsoft Band Plugin for NativeScript with Angular.",
   "main": "index",
   "typings": "index.d.ts",
   "nativescript": {
