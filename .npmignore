@@ -70,6 +70,7 @@ typedoc.json
 typings.json
 typings
 .jshintrc
+yarn.lock
 .editorconfig
 *.png
 resources
