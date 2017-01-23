@@ -10,14 +10,14 @@
     }
   },
   "dependencies": {
-    "@angular/common": "~2.4.3",
-    "@angular/compiler": "~2.4.3",
-    "@angular/core": "~2.4.3",
-    "@angular/forms": "~2.4.3",
-    "@angular/http": "~2.4.3",
-    "@angular/platform-browser": "~2.4.3",
-    "@angular/platform-browser-dynamic": "~2.4.3",
-    "@angular/router": "~3.4.3",
+    "@angular/common": "~2.4.4",
+    "@angular/compiler": "~2.4.4",
+    "@angular/core": "~2.4.4",
+    "@angular/forms": "~2.4.4",
+    "@angular/http": "~2.4.4",
+    "@angular/platform-browser": "~2.4.4",
+    "@angular/platform-browser-dynamic": "~2.4.4",
+    "@angular/router": "~3.4.4",
     "@xmlking/nativescript-ngx-microsoftband": "file:..",
     "nativescript-angular": "next",
     "nativescript-theme-core": "~1.0.2",
@@ -26,15 +26,15 @@
     "tns-core-modules": "next"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.5.40",
-    "babel-traverse": "6.18.0",
-    "babel-types": "6.18.0",
-    "babylon": "6.13.1",
+    "@types/jasmine": "^2.5.41",
+    "babel-traverse": "6.22.1",
+    "babel-types": "6.22.0",
+    "babylon": "6.15.0",
     "lazy": "1.0.11",
     "nativescript-dev-sass": "^0.4.1",
     "nativescript-dev-typescript": "~0.3.6",
     "tns-platform-declarations": "2.4.4",
     "typescript": "^2.1.5",
-    "zone.js": "~0.7.2"
+    "zone.js": "~0.7.6"
   }
 }

@@ -12,7 +12,7 @@ import {View} from "ui/core/view";
 @Component({
     selector: 'gyroscope',
     template: `
-      <StackLayout class="green" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout class="blue" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf21d" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
         <Label row="3" [text]="sensorData?.x" horizontalAlignment="center" class="font-weight-normal"></Label>

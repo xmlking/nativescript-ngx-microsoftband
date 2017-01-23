@@ -8,38 +8,23 @@ import {NgZone} from "@angular/core";
 import {MicrosoftBandService} from '@xmlking/nativescript-ngx-microsoftband';
 import {View} from "ui/core/view";
 
-// readonly flightsAscended: number;
-//
-// readonly flightsAscendedToday: number;
-//
-// readonly flightsDescended: number;
-//
-// readonly rate: number;
-//
-// readonly steppingGain: number;
-//
-// readonly steppingLoss: number;
-//
-// readonly stepsAscended: number;
-//
-// readonly stepsDescended: number;
-//
-// readonly totalGain: number;
-//
-// readonly totalGainToday: number;
-//
-// readonly totalLoss: number;
-
-
 @Component({
     selector: 'altimeter',
     template: `
-      <StackLayout class="blue" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout class="green" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf0fd" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
-        <Label row="3" [text]="sensorData?.flightsAscended" horizontalAlignment="center" class="font-weight-normal"></Label>
-        <Label row="4" [text]="sensorData?.flightsAscendedToday" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="3" [text]="sensorData?.flightsAscendedToday" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="4" [text]="sensorData?.flightsAscended" horizontalAlignment="center" class="font-weight-normal"></Label>
         <Label row="5" [text]="sensorData?.flightsDescended" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="6" [text]="sensorData?.rate" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="7" [text]="sensorData?.steppingGain" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="8" [text]="sensorData?.steppingLoss" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="9" [text]="sensorData?.stepsAscended" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="10" [text]="sensorData?.stepsDescended" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="11" [text]="sensorData?.totalGainToday" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="12" [text]="sensorData?.totalGain" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="13" [text]="sensorData?.totalLoss" horizontalAlignment="center" class="font-weight-normal"></Label>
       </StackLayout>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush

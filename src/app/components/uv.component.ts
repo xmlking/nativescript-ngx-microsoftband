@@ -15,7 +15,8 @@ import {View} from "ui/core/view";
       <StackLayout class="purple" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf185" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
-        <Label row="3" [text]="sensorData?.uvIndexLevel" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="3" [text]="sensorData?.exposureToday" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="4" [text]="uvIndexLevel" horizontalAlignment="center" class="font-weight-normal"></Label>
       </StackLayout>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -29,6 +30,18 @@ export class UVComponent implements OnInit, OnDestroy {
     public sensorData: UVData;
     public errorMsg: string;
     public started: boolean = false;
+
+    get uvIndexLevel() {
+        if(this.sensorData === undefined) return "Unknown";
+        switch(this.sensorData.uvIndexLevel) {
+            case IndexLevel.None: return "None";
+            case IndexLevel.Low: return "Low";
+            case IndexLevel.Medium: return "Medium";
+            case IndexLevel.High: return "High";
+            case IndexLevel.VeryHigh: return "VeryHigh";
+            default: return "Unknown";
+        }
+    }
 
     constructor(private zone: NgZone, private cd: ChangeDetectorRef, private msband: MicrosoftBandService) {
 

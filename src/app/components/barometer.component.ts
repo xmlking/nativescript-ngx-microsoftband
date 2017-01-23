@@ -12,7 +12,7 @@ import {View} from "ui/core/view";
 @Component({
     selector: 'barometer',
     template: `
-      <StackLayout class="sumo1" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout class="coral" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf11d" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
         <Label row="3" [text]="sensorData?.airPressure" horizontalAlignment="center" class="font-weight-normal"></Label>

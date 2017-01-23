@@ -11,11 +11,11 @@ import {View} from "ui/core/view";
 @Component({
     selector: 'heart-rate',
     template: `
-      <StackLayout class="red" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout minHeight="100" class="red" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf004" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
         <Label row="3" [text]="heartRate?.heartRate" horizontalAlignment="center" class="font-weight-bold"></Label>
-        <Label row="4" [text]="heartRate?.quality" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="4" [text]="quality" horizontalAlignment="center" class="font-weight-normal"></Label>
         <Label row="5" [text]="rrInterval?.interval" horizontalAlignment="center" class="font-weight-normal"></Label>
       </StackLayout>
     `,
@@ -32,6 +32,15 @@ export class HeartRateComponent implements OnInit, OnDestroy {
     public rrInterval: RRIntervalData;
     public errorMsg: string;
     public started: boolean = false;
+
+    get quality() {
+        if(this.heartRate === undefined) return "Unknown";
+        switch(this.heartRate.quality) {
+            case Quality.Acquiring: return "Acquiring";
+            case Quality.Locked: return "Locked";
+            default: return "Acquiring";
+        }
+    }
 
     constructor(private zone: NgZone, private cd: ChangeDetectorRef, private msband: MicrosoftBandService) {
 

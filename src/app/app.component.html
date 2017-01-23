@@ -6,7 +6,7 @@
 <TabView class="tab-view">
 
   <ScrollView *tabItem="{title: 'Status'}">
-    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
+    <GridLayout rows="auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto,auto" columns="auto,*">
       <Label row="0" col="0" text="Name" class="text-left font-weight-bold"></Label>
       <Label row="0" col="1" [text]='name' textWrap="true" class="text-right"></Label>
       <Label row="1" col="0" text="Firmware" class="text-left font-weight-bold"></Label>
@@ -22,12 +22,14 @@
       <Label row="6" col="0" text="connected?" class="text-left font-weight-bold"></Label>
       <Label row="6" col="1" [text]='connected' class="text-right"></Label>
 
-      <Label row="7" colSpan="2" *ngIf='message' [text]='"message: " + message'></Label>
-      <Label row="8" colSpan="2" *ngIf='errorMsg' [text]='"error: " + errorMsg'></Label>
+      <ActivityIndicator row="7" colSpan="2" class="spinner" *ngIf="!connected" busy="true"></ActivityIndicator>
 
-      <Button row="9" colSpan="2" class="btn btn-primary" text="Add Tile" (tap)="addTile()"></Button>
-      <Button row="10" col="0" class="btn btn-outline" text="Send Notification" (tap)="sendNotification()"></Button>
-      <Button row="10" col="1" class="btn btn-outline" text="Send Haptic" (tap)="sendHaptic()"></Button>
+      <Label row="8" colSpan="2" *ngIf='message' [text]='"message: " + message'></Label>
+      <Label row="9" colSpan="2" *ngIf='errorMsg' [text]='"error: " + errorMsg'></Label>
+
+      <Button row="10" colSpan="2" class="btn btn-primary" text="Add Tile" (tap)="addTile()"></Button>
+      <Button row="11" col="0" class="btn btn-outline" text="Send Notification" (tap)="sendNotification()"></Button>
+      <Button row="11" col="1" class="btn btn-outline" text="Send Haptic" (tap)="sendHaptic()"></Button>
     </GridLayout>
   </ScrollView>
 
@@ -37,19 +39,19 @@
 
       <heart-rate connected="connected" row="0" col="0" ></heart-rate>
       <accelerometer connected="connected" row="0" col="1" ></accelerometer>
-      <altimeter connected="connected" row="0" col="2" ></altimeter>
+      <gyroscope connected="connected" row="0" col="2"></gyroscope>
 
       <pedometer connected="connected" row="1" col="0"></pedometer>
       <barometer connected="connected" row="1" col="1"></barometer>
       <calories connected="connected" row="1" col="2"></calories>
 
-      <uv connected="connected" row="2" col="0"></uv>
+      <ambient-light connected="connected" row="2" col="0"></ambient-light>
       <skin-temperature connected="connected" row="2" col="1"></skin-temperature>
       <gsr connected="connected" row="2" col="2"></gsr>
 
-      <gyroscope connected="connected" row="3" col="0"></gyroscope>
-      <ambient-light connected="connected" row="3" col="1"></ambient-light>
-      <distance connected="connected" row="3" col="2"></distance>
+      <uv connected="connected" row="3" col="0"></uv>
+      <distance connected="connected" row="3" col="1"></distance>
+      <altimeter connected="connected" row="3" col="2" ></altimeter>
 
       <contact connected="connected" row="4" col="0"></contact>
 

@@ -19,7 +19,7 @@ import {View} from "ui/core/view";
         <Label row="4" [text]="sensorData?.totalDistance" horizontalAlignment="center" class="font-weight-normal"></Label>
         <Label row="5" [text]="sensorData?.pace" horizontalAlignment="center" class="font-weight-normal"></Label>
         <Label row="6" [text]="sensorData?.speed" horizontalAlignment="center" class="font-weight-normal"></Label>
-        <Label row="7" [text]="sensorData?.motionType" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="7" [text]="motionType" horizontalAlignment="center" class="font-weight-normal"></Label>
       </StackLayout>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -33,6 +33,18 @@ export class DistanceComponent implements OnInit, OnDestroy {
     public sensorData: DistanceData;
     public errorMsg: string;
     public started: boolean = false;
+
+    get motionType() {
+        if(this.sensorData === undefined) return "Unknown";
+        switch(this.sensorData.motionType) {
+            case MotionType.Running: return "Running";
+            case MotionType.Idle: return "Idle";
+            case MotionType.Walking: return "Idle";
+            case MotionType.Idle: return "Jogging";
+            case MotionType.Running: return "Running";
+            default: return "Unknown";
+        }
+    }
 
     constructor(private zone: NgZone, private cd: ChangeDetectorRef, private msband: MicrosoftBandService) {
 

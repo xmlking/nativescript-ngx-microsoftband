@@ -11,14 +11,19 @@
 // Place any CSS rules you want to apply on both iOS and Android here.
 // This is where the vast majority of your CSS code goes.
 
-
+/**
+ * FontAwesome
+ */
 .fa {
   font-family: FontAwesome, fontawesome-webfont;
 }
 
+/**
+ * Sensor Tails
+ */
 .tile {
   color:#fff;
-  margin: 5;
+  margin: 3;
   .title {
     background-color: #99ccff;
     Label {
@@ -56,40 +61,41 @@
 .sumo0 {
   @extend .tile;
   background-color: #da5efa;
-  //color:#25a105
 }
 
 .yellow {
   @extend .tile;
-  background-color: #fada5e;
-  //color:#0525a1;
+  background-color: #EBC944;
 }
 
-.sumo1 {
+.coral {
   @extend .tile;
-  background-color: #5efada;
-  //color:#a10525
+  background-color: coral;
 }
 
 .purple {
   @extend .tile;
   background-color: #862a75;
-  //color:#79d58a
 }
 
 .trendygreen {
   @extend .tile;
   background-color: #76862a;
-  //color:#8979d5
 }
 
 .tealblue {
   @extend .tile;
   background-color: #2a7686;
-  //color:#d58979
 }
 
+/**
+ * ActivityIndicator
+ */
 
+.spinner {
+  horizontal-align: center;
+  veritical-align: center;
+}
 
 
 

@@ -12,10 +12,10 @@ import {View} from "ui/core/view";
 @Component({
     selector: 'contact',
     template: `
-      <StackLayout class="yellow" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout minHeight="100" class="yellow" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf127" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
-        <Label row="3" [text]="sensorData?.wornState" horizontalAlignment="center" class="font-weight-normal"></Label>
+        <Label row="3" [text]="wornState" horizontalAlignment="center" class="font-weight-normal"></Label>
       </StackLayout>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -29,6 +29,15 @@ export class ContactComponent implements OnInit, OnDestroy {
     public sensorData: ContactData;
     public errorMsg: string;
     public started: boolean = false;
+
+    get wornState() {
+        if(this.sensorData === undefined) return "Unknown";
+        switch(this.sensorData.wornState) {
+            case WornState.Worn: return "Worn";
+            case WornState.NotWorn: return "NotWorn";
+            default: return "Unknown";
+        }
+    }
 
     constructor(private zone: NgZone, private cd: ChangeDetectorRef, private msband: MicrosoftBandService) {
 

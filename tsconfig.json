@@ -1,9 +1,13 @@
 {
+    "compileOnSave": false,
+    "buildOnSave": false,
     "compilerOptions": {
         "target": "ES5",
         "module": "commonjs",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
+        "stripInternal": true,
+        "sourceMap": true,
         "declaration": true,
         "noEmitHelpers": true,
         "lib": [
@@ -12,11 +16,12 @@
             "es2017"
         ]
     },
-    "exclude": [
-        "src",
-        "node_modules",
-        "platforms"
+    "files": [
+        "./index.ts",
+        "MicrosoftBand.d.ts",
+        "references.d.ts"
     ],
-    "compileOnSave": false,
-    "buildOnSave": false
+    "angularCompilerOptions": {
+        "skipTemplateCodegen": true
+    }
 }

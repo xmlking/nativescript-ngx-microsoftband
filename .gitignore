@@ -56,7 +56,6 @@ __build__/**
 .vscode
 
 *.d.ts
-index.d.ts
 !MicrosoftBand.d.ts
 !references.d.ts
 *.js
@@ -69,6 +68,7 @@ src/lib
 src/platforms
 src/hooks
 src/node_modules
+hooks
 
 !preparepublish.js
 !preparedevelop.js

@@ -1,6 +1,6 @@
 {
   "name": "@xmlking/nativescript-ngx-microsoftband",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Your awesome NativeScript + Angular plugin.",
   "main": "index",
   "typings": "index.d.ts",
@@ -22,9 +22,9 @@
     "ng2",
     "iot",
     "fitness",
-    "healthcare",
-    "nativescript",
-    "microsoftband"
+    "healthare",
+    "nativeScript",
+    "microsoftBand"
   ],
   "author": "Sumanth Chinthagunta <xmlking@gmail.com>",
   "license": "MIT",
@@ -40,23 +40,16 @@
     "preparedemo": "yarn run build; cd src; tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ..;",
     "setup": "cd src && yarn && cd .. && yarn"
   },
-  "dependencies": {
-    "@angular/common": "~2.4.3",
-    "@angular/compiler": "~2.4.3",
-    "@angular/core": "~2.4.3",
-    "@angular/forms": "~2.4.3",
-    "@angular/http": "~2.4.3",
-    "@angular/platform-browser": "~2.4.3",
-    "@angular/platform-browser-dynamic": "~2.4.3",
-    "@angular/router": "~3.4.3",
-    "nativescript-angular": "next",
-    "reflect-metadata": "^0.1.8",
-    "rxjs": "~5.0.3"
-  },
   "devDependencies": {
+    "@angular/common": "^2.4.4",
+    "@angular/compiler": "^2.4.4",
+    "@angular/compiler-cli": "^2.4.4",
+    "@angular/core": "^2.4.4",
+    "nativescript-angular": "next",
+    "rxjs": "^5.0.3",
     "tns-core-modules": "next",
     "tns-platform-declarations": "2.4.4",
     "typescript": "~2.1.5",
-    "zone.js": "~0.7.2"
+    "zone.js": "~0.7.6"
   }
 }

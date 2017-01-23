@@ -12,7 +12,7 @@ import {View} from "ui/core/view";
 @Component({
     selector: 'pedometer',
     template: `
-      <StackLayout class="red" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
+      <StackLayout minHeight="100" class="trendygreen" [row]="row" [col]="col" (tap)="toggle(iconLabel)" >
         <Label row="1" [text]="errorMsg" horizontalAlignment="center" class="text-muted" textWrap="true"></Label>
         <Label row="2" text="\uf183" horizontalAlignment="center" class="fa h2" #iconLabel></Label>
         <Label row="3" [text]="sensorData?.stepsToday" horizontalAlignment="center" class="font-weight-normal"></Label>
