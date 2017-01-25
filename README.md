@@ -8,12 +8,12 @@ This plugin uses MicrosoftBand [CocoaPod](https://github.com/xmlking/MicrosoftBa
 
 ## Install
 
-#### Prerequisites
+### Prerequisites
 
 1. NodeJS > 7.x
 2. NativeScript CLI
 
-#### Plugin
+### Plugin
 
 ```sh
 tns plugin add @xmlking/nativescript-ngx-microsoftband
@@ -53,19 +53,44 @@ export class AppModule { }
 
 Refer [app.component.ts](src/app/app.component.ts) and [heart-rate.component.ts](src/app/components/heart-rate.component.ts)
 
+
+## Build
+
+> Building and publishing the plugin.
+
+## Prerequisites
+```bash
+yarn global add ts-node
+yarn global add rollup
+```
+
+### Setup
+```
+yarn run setup
+```
+
+### build
+```bash
+yarn run build
+```
+
+### publish
+```bash
+cd dist
+npm publish
+```
+
 ## Example App
 
 > Setup and Run Example app
 
-#### Setup
+### Setup
 ```
-yarn run setup
-yarn run build
 cd src
-tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ..
+tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ../dist
 ```
 
-#### Run
+### Run
 ```
 cd src
 tns prepare ios
@@ -75,7 +100,7 @@ tns build ios
 
 ## Credits
 
-Idea came from [NathanWalker](https://github.com/NathanWalker)
+Idea came from [NathanWalker](https://github.com/NathanWalker), [Minko Gechev](https://github.com/mgechev)
 
 ## Contributors
 
