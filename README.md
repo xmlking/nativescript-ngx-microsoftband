@@ -58,7 +58,7 @@ Refer [app.component.ts](src/app/app.component.ts) and [heart-rate.component.ts]
 
 > Building and publishing the plugin.
 
-## Prerequisites
+### Prerequisites
 ```bash
 yarn global add ts-node
 yarn global add rollup
