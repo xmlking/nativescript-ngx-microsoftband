@@ -1,8 +1,9 @@
 {
   "name": "@xmlking/nativescript-ngx-microsoftband",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Microsoft Band Plugin for NativeScript with Angular.",
   "main": "index",
+  "module": "esm/index",
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
@@ -22,7 +23,7 @@
     "ng2",
     "iot",
     "fitness",
-    "healthare",
+    "healthcare",
     "nativeScript",
     "microsoftBand"
   ],
@@ -33,18 +34,16 @@
   },
   "homepage": "https://github.com/xmlking/nativescript-ngx-microsoftband#readme",
   "scripts": {
-    "build": "tsc",
-    "clean": "rm -rf src/platforms",
-    "demo.ios": "yarn run preparedemo; cd src; tns run ios --emulator --justlaunch",
-    "demo.android": "yarn run preparedemo; cd src; tns run android --emulator --justlaunch",
-    "preparedemo": "yarn run build; cd src; tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ..;",
-    "setup": "cd src && yarn && cd .. && yarn"
+    "setup": "cd src && yarn && cd .. && yarn",
+    "build": "rm -R dist && tsc -p tsconfig-esm.json && node --max-old-space-size=8192 ./node_modules/.bin/ngc && node --harmony-async-await tools/copy.js",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@angular/common": "^2.4.4",
     "@angular/compiler": "^2.4.4",
     "@angular/compiler-cli": "^2.4.4",
     "@angular/core": "^2.4.4",
+    "fs-p": "^1.0.2",
     "nativescript-angular": "next",
     "rxjs": "^5.0.3",
     "tns-core-modules": "next",

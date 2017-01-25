@@ -69,12 +69,12 @@ yarn global add rollup
 yarn run setup
 ```
 
-### build
+### Build
 ```bash
 yarn run build
 ```
 
-### publish
+### Publish
 ```bash
 cd dist
 npm publish
