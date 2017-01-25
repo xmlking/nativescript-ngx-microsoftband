@@ -1,4 +1,5 @@
 const fsp = require("fs-p");
+const fs = require("fs");
 
 (async function() {
     try {
@@ -10,9 +11,11 @@ const fsp = require("fs-p");
 
         await fsp.copy('./platforms', './dist/platforms');
         await fsp.copy('./MicrosoftBand.d.ts', './dist/MicrosoftBand.d.ts');
-        await fsp.copy('./dist/src/app/services/microsoftband.service.ios.d.ts', './dist/src/app/services/microsoftband.service.d.ts');
-        await fsp.copy('./dist/src/app/services/microsoftband.service.ios.d.ts', './dist/esm/src/app/services/microsoftband.service.d.ts');
         await fsp.copy('./README.md', './dist/README.md');
+
+        let indexText = fs.readFileSync('./dist/index.js').toString();
+        indexText = indexText.replace(/.ios/g, '');
+        fs.writeFileSync('./dist/index.js', indexText);
 
     } catch (err) { console.error(err) }
 }());

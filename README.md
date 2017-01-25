@@ -88,6 +88,7 @@ npm publish
 ```
 cd src
 tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ../dist
+# tns platform remove ios # cleanup?
 ```
 
 ### Run
