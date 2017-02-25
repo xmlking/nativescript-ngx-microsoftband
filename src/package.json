@@ -6,35 +6,35 @@
   "nativescript": {
     "id": "org.nativescript.msband",
     "tns-ios": {
-      "version": "2.4.0"
+      "version": "2.5.0"
     }
   },
   "dependencies": {
-    "@angular/common": "~2.4.4",
-    "@angular/compiler": "~2.4.4",
-    "@angular/core": "~2.4.4",
-    "@angular/forms": "~2.4.4",
-    "@angular/http": "~2.4.4",
-    "@angular/platform-browser": "~2.4.4",
-    "@angular/platform-browser-dynamic": "~2.4.4",
-    "@angular/router": "~3.4.4",
+    "@angular/common": "~2.4.8",
+    "@angular/compiler": "~2.4.8",
+    "@angular/core": "~2.4.8",
+    "@angular/forms": "~2.4.8",
+    "@angular/http": "~2.4.8",
+    "@angular/platform-browser": "~2.4.8",
+    "@angular/platform-browser-dynamic": "~2.4.8",
+    "@angular/router": "~3.4.8",
     "@xmlking/nativescript-ngx-microsoftband": "file:../dist",
-    "nativescript-angular": "next",
+    "nativescript-angular": "~1.4.0",
     "nativescript-theme-core": "~1.0.2",
-    "reflect-metadata": "~0.1.8",
+    "reflect-metadata": "~0.1.10",
     "rxjs": "~5.0.3",
-    "tns-core-modules": "next"
+    "tns-core-modules": "~2.5.1"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.5.41",
-    "babel-traverse": "6.22.1",
-    "babel-types": "6.22.0",
-    "babylon": "6.15.0",
+    "@types/jasmine": "^2.5.43",
+    "babel-traverse": "^6.23.1",
+    "babel-types": "^6.23.0",
+    "babylon": "^6.16.1",
     "lazy": "1.0.11",
-    "nativescript-dev-sass": "^0.4.1",
-    "nativescript-dev-typescript": "~0.3.6",
-    "tns-platform-declarations": "2.4.4",
-    "typescript": "^2.1.5",
-    "zone.js": "~0.7.6"
+    "nativescript-dev-sass": "^0.4.2",
+    "nativescript-dev-typescript": "~0.3.7",
+    "tns-platform-declarations": "~2.5.0",
+    "typescript": "^2.2.1",
+    "zone.js": "~0.7.7"
   }
 }

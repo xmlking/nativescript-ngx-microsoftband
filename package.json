@@ -7,8 +7,8 @@
   "typings": "index.d.ts",
   "nativescript": {
     "platforms": {
-      "android": "2.4.1",
-      "ios": "2.4.0"
+      "android": "2.5.1",
+      "ios": "2.5.1"
     }
   },
   "repository": {
@@ -35,20 +35,20 @@
   "homepage": "https://github.com/xmlking/nativescript-ngx-microsoftband#readme",
   "scripts": {
     "setup": "cd src && yarn && cd .. && yarn",
-    "build": "rm -R dist && tsc -p tsconfig-esm.json && node --max-old-space-size=8192 ./node_modules/.bin/ngc && node --harmony-async-await tools/copy.js",
+    "build": "rm -R dist && tsc -p tsconfig-esm.json && node --max-old-space-size=8192 ./node_modules/.bin/ngc && node tools/copy.js",
     "prepublish": "npm run build"
   },
   "devDependencies": {
-    "@angular/common": "^2.4.4",
-    "@angular/compiler": "^2.4.4",
-    "@angular/compiler-cli": "^2.4.4",
-    "@angular/core": "^2.4.4",
-    "fs-p": "^1.0.2",
-    "nativescript-angular": "next",
-    "rxjs": "^5.0.3",
-    "tns-core-modules": "next",
-    "tns-platform-declarations": "2.4.4",
-    "typescript": "~2.1.5",
-    "zone.js": "~0.7.6"
+    "@angular/common": "^2.4.8",
+    "@angular/compiler": "^2.4.8",
+    "@angular/compiler-cli": "^2.4.8",
+    "@angular/core": "^2.4.8",
+    "fs-p": "^1.0.3",
+    "nativescript-angular": "~1.4.0",
+    "rxjs": "~5.0.3",
+    "tns-core-modules": "~2.5.1",
+    "tns-platform-declarations": "~2.5.0",
+    "typescript": "~2.2.1",
+    "zone.js": "~0.7.7"
   }
 }
