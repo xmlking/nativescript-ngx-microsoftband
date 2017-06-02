@@ -1,6 +1,6 @@
 MicrosoftBand Plugin for Telerik NativeScript
 =============================================
-This NativeScript plugin enables to build Mobile apps to display [Microsoft Band](https://www.microsoft.com/microsoft-band/en-us) sensors data.
+This NativeScript plugin enables building Mobile apps to display [Microsoft Band](https://www.microsoft.com/microsoft-band/en-us) sensors data.
 This plugin uses MicrosoftBand [CocoaPod](https://github.com/xmlking/MicrosoftBand) written in **Swift** and [Band SDK](https://developer.microsoftband.com/bandsdk).
 
 
@@ -10,8 +10,16 @@ This plugin uses MicrosoftBand [CocoaPod](https://github.com/xmlking/MicrosoftBa
 
 ### Prerequisites
 
-1. NodeJS > 7.x
-2. NativeScript CLI
+1. Node > 8.0.0
+2. NativeScript CLI > 3.0.0
+    ```bash
+    yarn global add nativescript --ignore-engines
+    ```
+3. Cocoapods
+    ```bash
+    gem install cocoapods
+    pod repo update
+    ```
 
 ### Plugin
 
@@ -58,12 +66,6 @@ Refer [app.component.ts](src/app/app.component.ts) and [heart-rate.component.ts]
 
 > Building and publishing the plugin.
 
-### Prerequisites
-```bash
-yarn global add ts-node
-yarn global add rollup
-```
-
 ### Setup
 ```
 yarn run setup
@@ -95,7 +97,7 @@ tns plugin remove @xmlking/nativescript-ngx-microsoftband; tns plugin add ../dis
 ```
 cd src
 tns prepare ios
-tns build ios
+tns build ios --release
 # open src/platforms/ios/src.xcworkspace project in xcode and run on attached iOS devise.
 ```
 
@@ -109,3 +111,6 @@ Idea came from [NathanWalker](https://github.com/NathanWalker), [Minko Gechev](h
 # License
 
 [MIT](/LICENSE)
+
+
+https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/#Usage_with_TypeScript
