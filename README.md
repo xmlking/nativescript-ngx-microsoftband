@@ -112,5 +112,3 @@ Idea came from [NathanWalker](https://github.com/NathanWalker), [Minko Gechev](h
 
 [MIT](/LICENSE)
 
-
-https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/#Usage_with_TypeScript
