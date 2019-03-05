@@ -1,5 +1,8 @@
 MicrosoftBand Plugin for Telerik NativeScript
 =============================================
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/xmlking/nativescript-ngx-microsoftband.svg)](https://greenkeeper.io/)
+
 This NativeScript plugin enables building Mobile apps to display [Microsoft Band](https://www.microsoft.com/microsoft-band/en-us) sensors data.
 This plugin uses MicrosoftBand [CocoaPod](https://github.com/xmlking/MicrosoftBand) written in **Swift** and [Band SDK](https://developer.microsoftband.com/bandsdk).
 
